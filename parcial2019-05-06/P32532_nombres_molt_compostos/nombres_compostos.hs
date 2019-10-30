@@ -5,4 +5,6 @@ nbDivisors :: Int -> Int
 nbDivisors = length . divisors
 
 moltCompost :: Int -> Bool
-moltCompost x = and [r | y <- [1..(x-1)], let r = nbDivisors y < nbDivisors x]
+moltCompost x = and [nbDivisors y < nbx | y <- [1..(x-1)]]
+  where
+    nbx = nbDivisors x
