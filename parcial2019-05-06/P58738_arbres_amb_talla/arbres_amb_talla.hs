@@ -13,6 +13,15 @@ size (Node _ _ lt rt) = 1 + size lt + size rt
 
 isOk :: STree a -> Bool
 isOk Nil = True
-isOk (Node n _ lt rt) = correctNode && isOk lt && isOk rt
+isOk (Node s _ lt rt) = correctNode && isOk lt && isOk rt
   where
-    correctNode = n == (size lt + size rt) + 1
+    correctNode = s == (size lt + size rt) + 1
+
+-- not workings
+nthElement :: STree a -> Int -> Maybe a
+nthElement Nil _ = Nothing
+nthElement (Node s n lt rt) x
+  | x > s = Nothing
+  | x == s = Just n
+  | (x <= (div s 2)) = nthElement lt x
+  | otherwise = nthElement rt x
