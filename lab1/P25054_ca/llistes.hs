@@ -75,22 +75,23 @@ oddNevens x = ((evenList x), (oddList x))
 
 
 
--- isPrime :: Int -> Bool
--- isPrime 2 = True
--- isPrime n = isPrime' 2
---   where
---     isPrime' :: Int -> Bool
---     isPrime' d
---       | mod n d == 0    = False
---       | d == (div n 2)  = True
---       | otherwise       = isPrime' (d + 1)
---
--- primeDivisors :: Int -> [Int]
--- primeDivisors 1 = []
--- primeDivisors n = primeDivisors' 2
---   where
---     primeDivisors' :: Int -> [Int]
---     primeDivisors' d
---       | d > n = []
---       | ((mod n d) == 0) && isPrime d = (d:(primeDivisors' (d+1)))
---       | otherwise                     = primeDivisors (d+1)
+isPrime :: Int -> Bool
+isPrime 2 = True
+isPrime 3 = True
+isPrime n = isPrime' 2
+  where
+    isPrime' :: Int -> Bool
+    isPrime' d
+      | mod n d == 0    = False
+      | d == (div n 2)  = True
+      | otherwise       = isPrime' (d + 1)
+
+primeDivisors :: Int -> [Int]
+primeDivisors 1 = []
+primeDivisors n = primeDivisors' 2
+  where
+    primeDivisors' :: Int -> [Int]
+    primeDivisors' d
+      | d > n = []
+      | ((mod n d) == 0) && isPrime d = (d:(primeDivisors' (d+1)))
+      | otherwise                     = primeDivisors' (d+1)
