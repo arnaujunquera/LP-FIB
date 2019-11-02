@@ -4,7 +4,7 @@ myFoldl f x (y:ys) = myFoldl f (f x y) ys
 
 myFoldr :: (a -> b -> b) -> b -> [a] -> b
 myFoldr _ x [] = x
-myFoldr f x (y:ys) = f x (myFoldr f y ys)
+myFoldr f x (y:ys) = f y (myFoldr f x ys)
 
 myIterate :: (a -> a) -> a -> [a]
 myIterate f x = x : myIterate f (f x)
@@ -21,12 +21,10 @@ myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter f xs = [x | x <- xs, f x]
 
 myAll :: (a -> Bool) -> [a] -> Bool
-myAll _ [] = True
-myAll f xs = myFoldl (&&) True [f x | x <- xs]
+myAll f x = and $ map (\x-> f x) x
 
 myAny :: (a -> Bool) -> [a] -> Bool
-myAny _ [] = False
-myAny f xs = myFoldl (||) False [f x | x <- xs]
+myAny f x = or $ map (\x-> f x) x
 
 myZip :: [a] -> [b] -> [(a, b)]
 myZip _ [] = []
