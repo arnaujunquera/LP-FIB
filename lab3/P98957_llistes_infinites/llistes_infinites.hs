@@ -7,9 +7,7 @@ nats = iterate (+1) 0
 
 
 ints :: [Integer]
-ints = tail $ concat $ map (f) nats
-  where
-    f x = [x, -x]
+ints = tail $ concat $ map (\x -> [x, -x]) nats
 
 
 triangulars :: [Integer]
@@ -17,43 +15,48 @@ triangulars = tail $ scanl (+) 0 nats
 
 
 factorials :: [Integer]
-factorials = scanl (*) 1 [1..]
+factorials = scanl (*) 1 (tail nats)
 
 
 fibs :: [Integer]
 fibs = 0 : 1 : (zipWith (+) fibs (tail fibs))
 
 
+isPrimeRec :: Integer -> Integer -> Bool
+isPrimeRec x d
+    | d == 1 = True
+    | mod x d == 0 = False
+    | otherwise = isPrimeRec x (d - 1)
+
 isPrime :: Integer -> Bool
-isPrime 0 = False
-isPrime 1 = False
-isPrime 2 = True
-isPrime n = isPrime' 2
-  where
-    isPrime' :: Integer -> Bool
-    isPrime' d
-      | mod n d == 0    = False
-      | d == (div n 2)  = True
-      | otherwise       = isPrime' (d + 1)
+isPrime x
+    | x == 0 = False
+    | x == 1 = False
+    | otherwise = isPrimeRec x (floor (sqrt (fromIntegral x)))
 
 primes :: [Integer]
-primes = filter isPrime nats
+primes = primers 2
+     where
+          primers :: Integer -> [Integer]
+          primers x
+               | isPrime x = x : primers (x + 1)
+               | otherwise = primers (x + 1)
 
-isHamming :: Integer -> Bool
-isHamming 0 = False
-isHamming 1 = True
-isHamming 2 = True
-isHamming 3 = True
-isHamming 5 = True
-isHamming n = isHamming' n
-  where
-    isHamming' :: Integer -> Bool
-    isHamming' n
-      | mod n 2 == 0 || mod n 3 == 0 || mod n 5 == 0 = True
-      | otherwise = False
 
-hammings:: [Integer]
-hammings = filter isHamming nats
+hammings :: [Integer]
+hammings = 1 : merge3 (map (* 2) hammings) (map (* 3) hammings) (map (* 5) hammings)
+
+merge3 :: [Integer] -> [Integer] -> [Integer] -> [Integer]
+merge3 xs ys zs = merge2 (merge2 xs ys) zs
+
+merge2 :: [Integer] -> [Integer] -> [Integer]
+merge2 a [] = a
+merge2 [] b = b
+merge2 (a:as) (b:bs)
+      | a < b  = a : (merge2 as (b:bs))
+      | b < a  = b : (merge2 (a:as) bs)
+      |otherwise = merge2 (a:as) bs
+
 
 
 
