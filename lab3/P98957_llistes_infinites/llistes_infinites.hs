@@ -54,3 +54,27 @@ isHamming n = isHamming' n
 
 hammings:: [Integer]
 hammings = filter isHamming nats
+
+
+
+lookNsay :: [Integer]
+lookNsay = iterate count 1
+
+count :: Integer -> Integer
+count a = read $ next $ show a
+
+next :: [Char] -> [Char]
+next [] = []
+next cs = (show n) ++ [pr] ++ next cua
+  where
+    pr = head cs
+    n = length $ takeWhile ( == pr) cs
+    cua = dropWhile ( == pr) cs
+
+
+
+tartaglia :: [[Integer]]
+tartaglia = (iterate (pascal) [1])
+
+pascal :: [Integer] -> [Integer]
+pascal xs = zipWith (+) (xs ++ [0]) ([0] ++ xs)
