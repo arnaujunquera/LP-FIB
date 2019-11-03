@@ -18,10 +18,15 @@ isOk (Node s _ lt rt) = correctNode && isOk lt && isOk rt
     correctNode = s == (size lt + size rt) + 1
 
 -- not workings
-nthElement :: STree a -> Int -> Maybe a
-nthElement Nil _ = Nothing
-nthElement (Node s n lt rt) x
-  | x > s = Nothing
-  | x == s = Just n
-  | (x <= (div s 2)) = nthElement lt x
-  | otherwise = nthElement rt x
+-- nthElement :: STree a -> Int -> Maybe a
+-- nthElement Nil _ = Nothing
+-- nthElement (Node s n lt rt) x
+--   | x <
+--
+-- mapToElements :: (a -> b) -> STree -> [Int] -> [Maybe b]
+-- mapToElements _ Nil _ = Nothing
+-- mapToElements f (Node s n lt rt) l =
+
+instance Functor STree where
+  fmap f Nil              = Nil
+  fmap f (Node s n lt rt) = (Node s (f n) (fmap f lt) (fmap f rt))
