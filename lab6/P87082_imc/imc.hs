@@ -1,21 +1,36 @@
-message m h
-  | imc<18 = "magror"
-  | imc>=18 && imc<25 = "corpulencia normal"
-  | imc>=25 && imc<30 = "sobrepes"
-  | imc>=30 && imc<40 = "obesitat"
-  | otherwise = "obesitat morbida"
-  where
-    imc = m/(h^2)
+-- ================================== BMI =================================== --
 
-convert l = putStrLn $ name ++ ": " ++ message m h
-  where (name:xs) = words l
-        (m:h:_) = map read $ xs :: [Float]
+bmi :: [String] -> String
+bmi [name, weight, heigth] = name ++ ": " ++ bmi'
+  where
+    bmi' :: String
+    bmi'
+      | imc <  18 = "underweight"
+      | imc <= 25 = "normal weight"
+      | imc <= 30 = "overweight"
+      | imc <= 40 = "obese"
+      | otherwise = "severely obese"
+      where
+        imc :: Float
+        imc = w / (h ^ 2)
+          where
+            h, w :: Float
+            h = read heigth
+            w = read weight
+
+-- ================================= OUTPUT ================================= --
+
+output :: String -> String
+output [] = ""
+output str = bmi $ words str
+
+-- ================================== MAIN ================================== --
 
 main :: IO ()
 main = do
-  line <- getLine
-  if line /= "*" then do
-    convert line
+  input <- getLine
+  if (input /= "*") then do
+    putStrLn $ output input
     main
   else
     return ()
