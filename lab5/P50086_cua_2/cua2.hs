@@ -35,6 +35,6 @@ translation :: Num b => b -> Queue b -> Queue b
 translation x q = fmap (+x) q
 
 union :: Queue a -> Queue a -> Queue a
-union (Queue l1 l2) (Queue l3 l4) = 
+union (Queue l1 l2) (Queue l3 l4) = Queue (l1++reverse l2) (l3++reverse l4)
 
 instance Monad Queue where
