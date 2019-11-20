@@ -1,0 +1,10 @@
+>>> absValue(-666)
+666
+>>> power(2, 3)
+8
+>>> isPrime(17)
+True
+>>> slowFib(5)
+5
+>>> quickFib(40)
+102334155
