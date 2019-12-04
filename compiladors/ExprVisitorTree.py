@@ -4,7 +4,7 @@ if __name__ is not None and "." in __name__:
 else:
     from ExprParser import ExprParser
 
-class ExprVisitor2(ParseTreeVisitor):
+class ExprVisitorTree(ParseTreeVisitor):
     def __init__(self):
         self.nivell = 0  # nivell de profunditat del node
     def visitExpr(self, ctx:ExprParser.ExprContext):

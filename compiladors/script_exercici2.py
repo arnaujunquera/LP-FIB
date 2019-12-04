@@ -3,7 +3,8 @@ from antlr4 import *
 from ExprLexer import ExprLexer
 from ExprParser import ExprParser
 from antlr4.InputStream import InputStream
-from ExprVisitor2 import ExprVisitor2
+from ExprVisitorTree import ExprVisitorTree
+from ExprVisitorEval import ExprVisitorEval
 
 if len(sys.argv) > 1:
     input_stream = FileStream(sys.argv[1])
@@ -15,5 +16,8 @@ token_stream = CommonTokenStream(lexer)
 parser = ExprParser(token_stream)
 tree = parser.root()
 
-visitor = ExprVisitor2()
-visitor.visit(tree)
+visitorTree = ExprVisitorTree()
+visitorTree.visit(tree)
+
+visitorEval = ExprVisitorEval()
+visitorEval.visit(tree)
