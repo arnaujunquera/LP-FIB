@@ -7,16 +7,17 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\b")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\t")
         buf.write("\33\4\2\t\2\4\3\t\3\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3")
         buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\7\3\26\n\3\f\3\16\3\31\13\3")
-        buf.write("\3\3\2\3\4\4\2\4\2\3\3\2\4\5\2\33\2\6\3\2\2\2\4\t\3\2")
-        buf.write("\2\2\6\7\5\4\3\2\7\b\7\2\2\3\b\3\3\2\2\2\t\n\b\3\1\2\n")
-        buf.write("\13\7\3\2\2\13\27\3\2\2\2\f\r\f\6\2\2\r\16\7\7\2\2\16")
-        buf.write("\26\5\4\3\7\17\20\f\5\2\2\20\21\7\6\2\2\21\26\5\4\3\6")
-        buf.write("\22\23\f\4\2\2\23\24\t\2\2\2\24\26\5\4\3\5\25\f\3\2\2")
-        buf.write("\2\25\17\3\2\2\2\25\22\3\2\2\2\26\31\3\2\2\2\27\25\3\2")
-        buf.write("\2\2\27\30\3\2\2\2\30\5\3\2\2\2\31\27\3\2\2\2\4\25\27")
+        buf.write("\3\3\2\3\4\4\2\4\2\4\3\2\6\7\3\2\4\5\2\33\2\6\3\2\2\2")
+        buf.write("\4\t\3\2\2\2\6\7\5\4\3\2\7\b\7\2\2\3\b\3\3\2\2\2\t\n\b")
+        buf.write("\3\1\2\n\13\7\3\2\2\13\27\3\2\2\2\f\r\f\6\2\2\r\16\7\b")
+        buf.write("\2\2\16\26\5\4\3\6\17\20\f\5\2\2\20\21\t\2\2\2\21\26\5")
+        buf.write("\4\3\6\22\23\f\4\2\2\23\24\t\3\2\2\24\26\5\4\3\5\25\f")
+        buf.write("\3\2\2\2\25\17\3\2\2\2\25\22\3\2\2\2\26\31\3\2\2\2\27")
+        buf.write("\25\3\2\2\2\27\30\3\2\2\2\30\5\3\2\2\2\31\27\3\2\2\2\4")
+        buf.write("\25\27")
         return buf.getvalue()
 
 
@@ -30,9 +31,11 @@ class ExprParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "<INVALID>", "'+'", "'-'", "'*'", "'**'" ]
+    literalNames = [ "<INVALID>", "<INVALID>", "'+'", "'-'", "'*'", "'/'", 
+                     "'**'" ]
 
-    symbolicNames = [ "<INVALID>", "NUM", "MES", "RES", "MUL", "POW", "WS" ]
+    symbolicNames = [ "<INVALID>", "NUM", "MES", "RES", "MUL", "DIV", "POW", 
+                      "WS" ]
 
     RULE_root = 0
     RULE_expr = 1
@@ -44,8 +47,9 @@ class ExprParser ( Parser ):
     MES=2
     RES=3
     MUL=4
-    POW=5
-    WS=6
+    DIV=5
+    POW=6
+    WS=7
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -120,6 +124,9 @@ class ExprParser ( Parser ):
         def MUL(self):
             return self.getToken(ExprParser.MUL, 0)
 
+        def DIV(self):
+            return self.getToken(ExprParser.DIV, 0)
+
         def MES(self):
             return self.getToken(ExprParser.MES, 0)
 
@@ -171,7 +178,7 @@ class ExprParser ( Parser ):
                         self.state = 11
                         self.match(ExprParser.POW)
                         self.state = 12
-                        self.expr(5)
+                        self.expr(4)
                         pass
 
                     elif la_ == 2:
@@ -182,7 +189,12 @@ class ExprParser ( Parser ):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
                         self.state = 14
-                        self.match(ExprParser.MUL)
+                        _la = self._input.LA(1)
+                        if not(_la==ExprParser.MUL or _la==ExprParser.DIV):
+                            self._errHandler.recoverInline(self)
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
                         self.state = 15
                         self.expr(4)
                         pass

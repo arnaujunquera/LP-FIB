@@ -1,12 +1,27 @@
 grammar Expr;
 
-root : expr EOF;
+root : stat+ EOF;
 
-expr : expr POW expr | expr MUL expr | expr (MES|RES) expr | NUM;
+stat : ID ASSIG expr
+    | WR expr
+    ;
+
+expr : <assoc=right> expr POW expr
+    | expr (MUL|DIV) expr
+    | expr (MES|RES) expr
+    | NUM
+    | ID;
+
+ID    : [a-z]+
+ASSIG : '='
 
 NUM : [0-9]+;
+
 MES : '+';
 RES : '-';
 MUL : '*';
+DIV : '/';
 POW : '**';
+
+
 WS : [ \n]+ -> skip;

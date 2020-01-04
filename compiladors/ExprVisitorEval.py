@@ -21,6 +21,8 @@ class ExprVisitorEval(ParseTreeVisitor):
                 return self.visit(l[0]) - self.visit(l[2])
             elif (ExprParser.symbolicNames[l[1].getSymbol().type] == "MUL"):
                 return self.visit(l[0]) * self.visit(l[2])
+            elif (ExprParser.symbolicNames[l[1].getSymbol().type] == "DIV"):
+                return self.visit(l[0]) / self.visit(l[2])
             elif (ExprParser.symbolicNames[l[1].getSymbol().type] == "POW"):
                 return self.visit(l[0]) ** self.visit(l[2])
 # del ExprParser
