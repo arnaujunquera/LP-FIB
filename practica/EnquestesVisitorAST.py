@@ -1,3 +1,6 @@
+import pickle
+import networkx as nx
+
 # Generated from Enquestes.g by ANTLR 4.7.1
 from antlr4 import *
 if __name__ is not None and "." in __name__:
@@ -7,7 +10,7 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by EnquestesParser.
 
-class EnquestesVisitor(ParseTreeVisitor):
+class EnquestesVisitorAST(ParseTreeVisitor):
 
     # Visit a parse tree produced by EnquestesParser#root.
     def visitRoot(self, ctx:EnquestesParser.RootContext):
