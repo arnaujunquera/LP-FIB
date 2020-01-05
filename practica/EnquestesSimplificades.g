@@ -14,19 +14,19 @@ expr:
 
 
 preg:
-  IDE ': PREGUNTA' textpreg;
+  ID ': PREGUNTA' textpreg;
 
 resp:
-  IDE ': RESPOSTA' textresp;
+  ID ': RESPOSTA' textresp;
 
 item:
-  IDE ': ITEM' textitem;
+  ID ': ITEM' textitem;
 
 altr:
-  IDE ': ALTERNATIVA' textaltr;
+  ID ': ALTERNATIVA' textaltr;
 
 enqs:
-  IDE ': ENQUESTA' textenqs;
+  ID ': ENQUESTA' textenqs;
 
 
 
@@ -38,13 +38,13 @@ textresp:
   opc+;
 
 textitem:
-  IDE'->'IDE;
+  ID'->'ID;
 
 textaltr:
-  IDE '[' alts ']';
+  ID '[' alts ']';
 
 textenqs:
-  IDE+;
+  ID+;
 
 
 
@@ -56,13 +56,12 @@ alts:
   alt (',' alt)*;
 
 alt:
-  '(' NUM ',' IDE ')';
-
+  '(' NUM ',' ID ')';
 
 
 
 END : 'END';
 NUM : [0-9]+;
-IDE : [0-9a-zA-Z]+;
+ID  : [a-zA-Z][a-zA-Z0-9]* ;
 TXT : [0-9a-zA-Z\u0080-\u00FF ]+;
 WS  : [ \n]+ -> skip;
