@@ -12,7 +12,8 @@ else:
 
 class EnquestesVisitorAST(ParseTreeVisitor):
     def __init__(self):
-        self.graph = nx.Graph()
+        self.graph = nx.DiGraph()
+        self.itemDict = dict()
 
     # Visit a parse tree produced by EnquestesParser#root.
     def visitRoot(self, ctx:EnquestesParser.RootContext):
