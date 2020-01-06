@@ -8,35 +8,35 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\25")
-        buf.write("^\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("]\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\4\t\t\t\3\2\3\2\3\2\3\2\3\2\6\2\30\n\2\r\2\16\2\31")
-        buf.write("\3\2\3\2\3\2\3\3\3\3\3\3\3\3\6\3#\n\3\r\3\16\3$\3\3\3")
-        buf.write("\3\3\4\3\4\3\4\3\4\6\4-\n\4\r\4\16\4.\3\5\3\5\3\5\3\5")
-        buf.write("\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\6\6>\n\6\r\6\16\6")
-        buf.write("?\3\6\3\6\3\7\3\7\3\7\3\7\7\7H\n\7\f\7\16\7K\13\7\3\b")
-        buf.write("\3\b\3\b\6\bP\n\b\r\b\16\bQ\3\b\3\b\3\t\3\t\3\t\3\t\3")
-        buf.write("\t\3\t\5\t\\\n\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\2\2`\2")
-        buf.write("\27\3\2\2\2\4\36\3\2\2\2\6(\3\2\2\2\b\60\3\2\2\2\n\67")
-        buf.write("\3\2\2\2\fC\3\2\2\2\16L\3\2\2\2\20U\3\2\2\2\22\30\5\4")
-        buf.write("\3\2\23\30\5\6\4\2\24\30\5\b\5\2\25\30\5\n\6\2\26\30\5")
-        buf.write("\f\7\2\27\22\3\2\2\2\27\23\3\2\2\2\27\24\3\2\2\2\27\25")
-        buf.write("\3\2\2\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31")
-        buf.write("\32\3\2\2\2\32\33\3\2\2\2\33\34\7\21\2\2\34\35\7\2\2\3")
-        buf.write("\35\3\3\2\2\2\36\37\7\24\2\2\37 \7\3\2\2 \"\7\4\2\2!#")
-        buf.write("\7\23\2\2\"!\3\2\2\2#$\3\2\2\2$\"\3\2\2\2$%\3\2\2\2%&")
-        buf.write("\3\2\2\2&\'\7\5\2\2\'\5\3\2\2\2()\7\24\2\2)*\7\3\2\2*")
-        buf.write(",\7\6\2\2+-\5\16\b\2,+\3\2\2\2-.\3\2\2\2.,\3\2\2\2./\3")
-        buf.write("\2\2\2/\7\3\2\2\2\60\61\7\24\2\2\61\62\7\3\2\2\62\63\7")
-        buf.write("\7\2\2\63\64\7\24\2\2\64\65\7\b\2\2\65\66\7\24\2\2\66")
-        buf.write("\t\3\2\2\2\678\7\24\2\289\7\3\2\29:\7\t\2\2:;\7\24\2\2")
-        buf.write(";=\7\n\2\2<>\5\20\t\2=<\3\2\2\2>?\3\2\2\2?=\3\2\2\2?@")
-        buf.write("\3\2\2\2@A\3\2\2\2AB\7\13\2\2B\13\3\2\2\2CD\7\23\2\2D")
-        buf.write("E\7\3\2\2EI\7\f\2\2FH\7\24\2\2GF\3\2\2\2HK\3\2\2\2IG\3")
-        buf.write("\2\2\2IJ\3\2\2\2J\r\3\2\2\2KI\3\2\2\2LM\7\22\2\2MO\7\3")
-        buf.write("\2\2NP\7\23\2\2ON\3\2\2\2PQ\3\2\2\2QO\3\2\2\2QR\3\2\2")
-        buf.write("\2RS\3\2\2\2ST\7\r\2\2T\17\3\2\2\2UV\7\16\2\2VW\7\22\2")
-        buf.write("\2WX\7\17\2\2XY\7\24\2\2Y[\7\20\2\2Z\\\7\17\2\2[Z\3\2")
-        buf.write("\2\2[\\\3\2\2\2\\\21\3\2\2\2\n\27\31$.?IQ[")
+        buf.write("\3\2\3\2\3\3\3\3\3\3\3\3\6\3\"\n\3\r\3\16\3#\3\3\3\3\3")
+        buf.write("\4\3\4\3\4\3\4\6\4,\n\4\r\4\16\4-\3\5\3\5\3\5\3\5\3\5")
+        buf.write("\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\6\6=\n\6\r\6\16\6>\3")
+        buf.write("\6\3\6\3\7\3\7\3\7\3\7\7\7G\n\7\f\7\16\7J\13\7\3\b\3\b")
+        buf.write("\3\b\6\bO\n\b\r\b\16\bP\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3")
+        buf.write("\t\5\t[\n\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\2\2_\2\27\3")
+        buf.write("\2\2\2\4\35\3\2\2\2\6\'\3\2\2\2\b/\3\2\2\2\n\66\3\2\2")
+        buf.write("\2\fB\3\2\2\2\16K\3\2\2\2\20T\3\2\2\2\22\30\5\4\3\2\23")
+        buf.write("\30\5\6\4\2\24\30\5\b\5\2\25\30\5\n\6\2\26\30\5\f\7\2")
+        buf.write("\27\22\3\2\2\2\27\23\3\2\2\2\27\24\3\2\2\2\27\25\3\2\2")
+        buf.write("\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2")
+        buf.write("\2\2\32\33\3\2\2\2\33\34\7\21\2\2\34\3\3\2\2\2\35\36\7")
+        buf.write("\24\2\2\36\37\7\3\2\2\37!\7\4\2\2 \"\7\23\2\2! \3\2\2")
+        buf.write("\2\"#\3\2\2\2#!\3\2\2\2#$\3\2\2\2$%\3\2\2\2%&\7\5\2\2")
+        buf.write("&\5\3\2\2\2\'(\7\24\2\2()\7\3\2\2)+\7\6\2\2*,\5\16\b\2")
+        buf.write("+*\3\2\2\2,-\3\2\2\2-+\3\2\2\2-.\3\2\2\2.\7\3\2\2\2/\60")
+        buf.write("\7\24\2\2\60\61\7\3\2\2\61\62\7\7\2\2\62\63\7\24\2\2\63")
+        buf.write("\64\7\b\2\2\64\65\7\24\2\2\65\t\3\2\2\2\66\67\7\24\2\2")
+        buf.write("\678\7\3\2\289\7\t\2\29:\7\24\2\2:<\7\n\2\2;=\5\20\t\2")
+        buf.write("<;\3\2\2\2=>\3\2\2\2><\3\2\2\2>?\3\2\2\2?@\3\2\2\2@A\7")
+        buf.write("\13\2\2A\13\3\2\2\2BC\7\23\2\2CD\7\3\2\2DH\7\f\2\2EG\7")
+        buf.write("\24\2\2FE\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2I\r\3\2")
+        buf.write("\2\2JH\3\2\2\2KL\7\22\2\2LN\7\3\2\2MO\7\23\2\2NM\3\2\2")
+        buf.write("\2OP\3\2\2\2PN\3\2\2\2PQ\3\2\2\2QR\3\2\2\2RS\7\r\2\2S")
+        buf.write("\17\3\2\2\2TU\7\16\2\2UV\7\22\2\2VW\7\17\2\2WX\7\24\2")
+        buf.write("\2XZ\7\20\2\2Y[\7\17\2\2ZY\3\2\2\2Z[\3\2\2\2[\21\3\2\2")
+        buf.write("\2\n\27\31#->HPZ")
         return buf.getvalue()
 
 
@@ -109,9 +109,6 @@ class EnquestesParser ( Parser ):
 
         def END(self):
             return self.getToken(EnquestesParser.END, 0)
-
-        def EOF(self):
-            return self.getToken(EnquestesParser.EOF, 0)
 
         def preg(self, i:int=None):
             if i is None:
@@ -208,8 +205,6 @@ class EnquestesParser ( Parser ):
 
             self.state = 25
             self.match(EnquestesParser.END)
-            self.state = 26
-            self.match(EnquestesParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -252,25 +247,25 @@ class EnquestesParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 28
+            self.state = 27
             self.match(EnquestesParser.ID)
-            self.state = 29
+            self.state = 28
             self.match(EnquestesParser.T__0)
-            self.state = 30
+            self.state = 29
             self.match(EnquestesParser.T__1)
-            self.state = 32 
+            self.state = 31 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 31
+                self.state = 30
                 self.match(EnquestesParser.TXT)
-                self.state = 34 
+                self.state = 33 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==EnquestesParser.TXT):
                     break
 
-            self.state = 36
+            self.state = 35
             self.match(EnquestesParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
@@ -315,19 +310,19 @@ class EnquestesParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 38
+            self.state = 37
             self.match(EnquestesParser.ID)
-            self.state = 39
+            self.state = 38
             self.match(EnquestesParser.T__0)
-            self.state = 40
+            self.state = 39
             self.match(EnquestesParser.T__3)
-            self.state = 42 
+            self.state = 41 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 41
+                self.state = 40
                 self.opc()
-                self.state = 44 
+                self.state = 43 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==EnquestesParser.NUM):
@@ -371,17 +366,17 @@ class EnquestesParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_item)
         try:
             self.enterOuterAlt(localctx, 1)
+            self.state = 45
+            self.match(EnquestesParser.ID)
             self.state = 46
-            self.match(EnquestesParser.ID)
-            self.state = 47
             self.match(EnquestesParser.T__0)
-            self.state = 48
+            self.state = 47
             self.match(EnquestesParser.T__4)
-            self.state = 49
+            self.state = 48
             self.match(EnquestesParser.ID)
-            self.state = 50
+            self.state = 49
             self.match(EnquestesParser.T__5)
-            self.state = 51
+            self.state = 50
             self.match(EnquestesParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -429,29 +424,29 @@ class EnquestesParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
+            self.state = 52
+            self.match(EnquestesParser.ID)
             self.state = 53
-            self.match(EnquestesParser.ID)
-            self.state = 54
             self.match(EnquestesParser.T__0)
-            self.state = 55
+            self.state = 54
             self.match(EnquestesParser.T__6)
-            self.state = 56
+            self.state = 55
             self.match(EnquestesParser.ID)
-            self.state = 57
+            self.state = 56
             self.match(EnquestesParser.T__7)
-            self.state = 59 
+            self.state = 58 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 58
+                self.state = 57
                 self.alt()
-                self.state = 61 
+                self.state = 60 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==EnquestesParser.T__11):
                     break
 
-            self.state = 63
+            self.state = 62
             self.match(EnquestesParser.T__8)
         except RecognitionException as re:
             localctx.exception = re
@@ -494,20 +489,20 @@ class EnquestesParser ( Parser ):
         self.enterRule(localctx, 10, self.RULE_enqs)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 65
+            self.state = 64
             self.match(EnquestesParser.TXT)
-            self.state = 66
+            self.state = 65
             self.match(EnquestesParser.T__0)
-            self.state = 67
+            self.state = 66
             self.match(EnquestesParser.T__9)
-            self.state = 71
+            self.state = 70
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 68
+                    self.state = 67
                     self.match(EnquestesParser.ID) 
-                self.state = 73
+                self.state = 72
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,5,self._ctx)
 
@@ -553,23 +548,23 @@ class EnquestesParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 74
+            self.state = 73
             self.match(EnquestesParser.NUM)
-            self.state = 75
+            self.state = 74
             self.match(EnquestesParser.T__0)
-            self.state = 77 
+            self.state = 76 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 76
+                self.state = 75
                 self.match(EnquestesParser.TXT)
-                self.state = 79 
+                self.state = 78 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==EnquestesParser.TXT):
                     break
 
-            self.state = 81
+            self.state = 80
             self.match(EnquestesParser.T__10)
         except RecognitionException as re:
             localctx.exception = re
@@ -610,21 +605,21 @@ class EnquestesParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 83
+            self.state = 82
             self.match(EnquestesParser.T__11)
-            self.state = 84
+            self.state = 83
             self.match(EnquestesParser.NUM)
-            self.state = 85
+            self.state = 84
             self.match(EnquestesParser.T__12)
-            self.state = 86
+            self.state = 85
             self.match(EnquestesParser.ID)
-            self.state = 87
+            self.state = 86
             self.match(EnquestesParser.T__13)
-            self.state = 89
+            self.state = 88
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EnquestesParser.T__12:
-                self.state = 88
+                self.state = 87
                 self.match(EnquestesParser.T__12)
 
 

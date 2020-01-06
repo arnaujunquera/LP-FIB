@@ -16,43 +16,48 @@ class EnquestesVisitorAST(ParseTreeVisitor):
 
     # Visit a parse tree produced by EnquestesParser#root.
     def visitRoot(self, ctx:EnquestesParser.RootContext):
-        n = next(ctx.getChildren())
-        print(self.visit(n))
+        g = ctx.getChildren()
+        l = [next(g) for i in range(ctx.getChildCount())]
+        for i in range(len(l)):
+            if (l[i].getText() == 'END'):
+                print('END')
+            else:
+                print(self.visit(l[i]))
 
 
     # Visit a parse tree produced by EnquestesParser#preg.
     def visitPreg(self, ctx:EnquestesParser.PregContext):
-        return self.visitChildren(ctx)
+        return "PREGUNTA"
 
 
     # Visit a parse tree produced by EnquestesParser#resp.
     def visitResp(self, ctx:EnquestesParser.RespContext):
-        return self.visitChildren(ctx)
+        return "RESPOSTA"
 
 
     # Visit a parse tree produced by EnquestesParser#item.
     def visitItem(self, ctx:EnquestesParser.ItemContext):
-        return self.visitChildren(ctx)
+        return "ITEM"
 
 
     # Visit a parse tree produced by EnquestesParser#altr.
     def visitAltr(self, ctx:EnquestesParser.AltrContext):
-        return self.visitChildren(ctx)
+        return "ALTERNATIVA"
 
 
     # Visit a parse tree produced by EnquestesParser#enqs.
     def visitEnqs(self, ctx:EnquestesParser.EnqsContext):
-        return self.visitChildren(ctx)
+        return "ENQUESTA"
 
 
     # Visit a parse tree produced by EnquestesParser#opc.
     def visitOpc(self, ctx:EnquestesParser.OpcContext):
-        return self.visitChildren(ctx)
+        return "opcio"
 
 
     # Visit a parse tree produced by EnquestesParser#alt.
     def visitAlt(self, ctx:EnquestesParser.AltContext):
-        return self.visitChildren(ctx)
+        return "alternativa"
 
 
 

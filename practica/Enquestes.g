@@ -1,7 +1,7 @@
 grammar Enquestes;
 
 root:
-  (preg | resp | item | altr | enqs)+ END EOF;
+  (preg | resp | item | altr | enqs)+ END;
 
 
 preg:
