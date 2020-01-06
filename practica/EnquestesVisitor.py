@@ -14,11 +14,6 @@ class EnquestesVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by EnquestesParser#expr.
-    def visitExpr(self, ctx:EnquestesParser.ExprContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by EnquestesParser#preg.
     def visitPreg(self, ctx:EnquestesParser.PregContext):
         return self.visitChildren(ctx)

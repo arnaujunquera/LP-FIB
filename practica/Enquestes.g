@@ -1,14 +1,7 @@
 grammar Enquestes;
 
 root:
-  expr+ END EOF;
-
-expr:
-  preg |
-  resp |
-  item |
-  altr |
-  enqs;
+  (preg | resp | item | altr | enqs)+ END EOF;
 
 
 preg:

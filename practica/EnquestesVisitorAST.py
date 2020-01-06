@@ -1,3 +1,6 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
 # Generated from Enquestes.g by ANTLR 4.7.1
 from antlr4 import *
 if __name__ is not None and "." in __name__:
@@ -7,16 +10,14 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by EnquestesParser.
 
-class EnquestesVisitor(ParseTreeVisitor):
+class EnquestesVisitorAST(ParseTreeVisitor):
+    def __init__(self):
+        self.graf = nx.Graph()
 
     # Visit a parse tree produced by EnquestesParser#root.
     def visitRoot(self, ctx:EnquestesParser.RootContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#expr.
-    def visitExpr(self, ctx:EnquestesParser.ExprContext):
-        return self.visitChildren(ctx)
+        n = next(ctx.getChildren())
+        print(self.visit(n))
 
 
     # Visit a parse tree produced by EnquestesParser#preg.

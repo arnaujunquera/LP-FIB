@@ -6,7 +6,7 @@ from antlr4.InputStream import InputStream
 from EnquestesVisitorAST import EnquestesVisitorAST
 
 if len(sys.argv) > 1:
-    input_stream = FileStream(sys.argv[1], 'UTF-8')
+    input_stream = FileStream(sys.argv[1], encoding='utf-8')
 else:
     input_stream = InputStream(input('? '))
 
