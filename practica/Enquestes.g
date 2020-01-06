@@ -11,75 +11,33 @@ expr:
   enqs;
 
 
-
-
 preg:
-  ide ': PREGUNTA' textpreg;
+  ID ':' 'PREGUNTA' TXT+ '?';
 
 resp:
-  ide ': RESPOSTA' textresp;
+  ID ':' 'RESPOSTA' opc+;
 
 item:
-  ide ': ITEM' textitem;
+  ID ':' 'ITEM' ID '->' ID;
 
 altr:
-  ide ': ALTERNATIVA' textaltr;
+  ID ':' 'ALTERNATIVA' ID '[' alt+ ']';
 
 enqs:
-  ide ': ENQUESTA' textenqs;
+  TXT ':' 'ENQUESTA' ID*;
 
 
-
-
-textpreg:
-  text+ '?';
-
-textresp:
-  opc+;
-
-textitem:
-  ide '->' ide;
-
-textaltr:
-  ide '[' alts ']';
-
-textenqs:
-  ide+;
-
-
-
-
-ide:
-  char+;
-
-text:
-  ichar+;
 
 opc:
-  NUM+ ':' text+ ';';
-
-alts:
-  alt (',' alt)*;
+  NUM':' TXT+ ';';
 
 alt:
-  '(' NUM+ ',' ide ')';
+  '(' NUM ',' ID ')' ','?;
 
 
 
-
-
-char:
-  LET |
-  NUM;
-
-ichar:
-  LET |
-  ACC |
-  NUM;
-
-
-END : 'END';
-NUM : [0-9];
-LET : [a-zA-Z];
-ACC : [\u0080-\u00FF];
-WS  : [ \n]+ -> skip;
+END : 'END' ;
+NUM : [0-9]+ ;
+TXT : [a-zA-Z\u0080-\u00FF]+ ;
+ID : [a-zA-Z][a-zA-Z0-9]* ;
+WS : [ \n] -> skip ;

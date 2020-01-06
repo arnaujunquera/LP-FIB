@@ -44,63 +44,13 @@ class EnquestesVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by EnquestesParser#textpreg.
-    def visitTextpreg(self, ctx:EnquestesParser.TextpregContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#textresp.
-    def visitTextresp(self, ctx:EnquestesParser.TextrespContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#textitem.
-    def visitTextitem(self, ctx:EnquestesParser.TextitemContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#textaltr.
-    def visitTextaltr(self, ctx:EnquestesParser.TextaltrContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#textenqs.
-    def visitTextenqs(self, ctx:EnquestesParser.TextenqsContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#ide.
-    def visitIde(self, ctx:EnquestesParser.IdeContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#text.
-    def visitText(self, ctx:EnquestesParser.TextContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by EnquestesParser#opc.
     def visitOpc(self, ctx:EnquestesParser.OpcContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by EnquestesParser#alts.
-    def visitAlts(self, ctx:EnquestesParser.AltsContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by EnquestesParser#alt.
     def visitAlt(self, ctx:EnquestesParser.AltContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#char.
-    def visitChar(self, ctx:EnquestesParser.CharContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by EnquestesParser#ichar.
-    def visitIchar(self, ctx:EnquestesParser.IcharContext):
         return self.visitChildren(ctx)
 
 
