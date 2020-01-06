@@ -41,8 +41,12 @@ class EnquestesVisitorAST(ParseTreeVisitor):
 
     # Visit a parse tree produced by EnquestesParser#item.
     def visitItem(self, ctx:EnquestesParser.ItemContext):
-        # n = next(ctx.getChildren())
-        # self.graph.add_node(n.getText())
+        g = ctx.getChildren()
+        l = [next(g) for i in range(ctx.getChildCount())]
+        n0 = l[0].getText()
+        n1 = l[3].getText()
+        n2 = l[5].getText()
+        self.graph.add_edge(n1, n2, label = n0, color = 'b')
         return self.visitChildren(ctx)
 
 
