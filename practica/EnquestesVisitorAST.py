@@ -1,5 +1,5 @@
 import networkx as nx
-import matplotlib.pyplot as plt
+from collections import defaultdict
 
 # Generated from Enquestes.g by ANTLR 4.7.1
 from antlr4 import *
@@ -46,9 +46,8 @@ class EnquestesVisitorAST(ParseTreeVisitor):
         n0 = l[0].getText()
         n1 = l[3].getText()
         n2 = l[5].getText()
+        self.itemDict[n0] = n1
         self.graph.add_edge(n1, n2, label = n0, color = 'b')
-        return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by EnquestesParser#altr.
     def visitAltr(self, ctx:EnquestesParser.AltrContext):
@@ -58,8 +57,17 @@ class EnquestesVisitorAST(ParseTreeVisitor):
 
     # Visit a parse tree produced by EnquestesParser#enqs.
     def visitEnqs(self, ctx:EnquestesParser.EnqsContext):
-        n = next(ctx.getChildren())
-        self.graph.add_node(n.getText())
+        g = ctx.getChildren()
+        l = [next(g) for i in range(ctx.getChildCount())]
+        ant = l[0].getText()
+        self.graph.add_node(ant)
+        for i in range(3, len(l)):
+            pos = l[i].getText()
+            if (i == 3):
+                self.graph.add_edge(ant, self.itemDict[pos])
+            else:
+                self.graph.add_edge(self.itemDict[ant], self.itemDict[pos])
+            ant = pos
 
 
     # Visit a parse tree produced by EnquestesParser#opc.
