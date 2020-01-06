@@ -21,7 +21,7 @@ class EnquestesVisitorAST(ParseTreeVisitor):
         self.graph = nx.Graph()
         for i in range(len(l)):
             if (l[i].getText() == 'END'):
-                print('END')
+                self.graph.add_node('END')
                 nx.write_gpickle(self.graph, "graph.gpickle")
             else:
                 self.visit(l[i])
@@ -30,46 +30,45 @@ class EnquestesVisitorAST(ParseTreeVisitor):
     # Visit a parse tree produced by EnquestesParser#preg.
     def visitPreg(self, ctx:EnquestesParser.PregContext):
         n = next(ctx.getChildren())
-        print(n)
         self.graph.add_node(n.getText())
-        print("PREGUNTA")
 
 
     # Visit a parse tree produced by EnquestesParser#resp.
     def visitResp(self, ctx:EnquestesParser.RespContext):
-        # self.graph.add_node(n.getText())
-        print("RESPOSTA")
+        n = next(ctx.getChildren())
+        self.graph.add_node(n.getText())
 
 
     # Visit a parse tree produced by EnquestesParser#item.
     def visitItem(self, ctx:EnquestesParser.ItemContext):
+        # n = next(ctx.getChildren())
         # self.graph.add_node(n.getText())
-        print("ITEM")
+        return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by EnquestesParser#altr.
     def visitAltr(self, ctx:EnquestesParser.AltrContext):
+        # n = next(ctx.getChildren())
         # self.graph.add_node(n.getText())
-        print("ALTERNATIVA")
-
+        return self.visitChildren(ctx)
 
     # Visit a parse tree produced by EnquestesParser#enqs.
     def visitEnqs(self, ctx:EnquestesParser.EnqsContext):
-        # self.graph.add_node(n.getText())
-        print("ENQUESTA")
+        n = next(ctx.getChildren())
+        self.graph.add_node(n.getText())
 
 
     # Visit a parse tree produced by EnquestesParser#opc.
     def visitOpc(self, ctx:EnquestesParser.OpcContext):
+        # n = next(ctx.getChildren())
         # self.graph.add_node(n.getText())
-        print("opcio")
-
+        return self.visitChildren(ctx)
 
     # Visit a parse tree produced by EnquestesParser#alt.
     def visitAlt(self, ctx:EnquestesParser.AltContext):
+        # n = next(ctx.getChildren())
         # self.graph.add_node(n.getText())
-        print("alternativa")
-
+        return self.visitChildren(ctx)
 
 
 del EnquestesParser
