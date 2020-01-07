@@ -19,7 +19,6 @@ class EnquestesVisitorAST(ParseTreeVisitor):
     def visitRoot(self, ctx:EnquestesParser.RootContext):
         g = ctx.getChildren()
         l = [next(g) for i in range(ctx.getChildCount())]
-        self.graph = nx.Graph()
         for i in range(len(l)):
             if (l[i].getText() == 'END'):
                 self.graph.add_node('END')
@@ -48,13 +47,18 @@ class EnquestesVisitorAST(ParseTreeVisitor):
         n1 = l[3].getText()
         n2 = l[5].getText()
         self.itemDict[n0] = n1
-        self.graph.add_edge(n1, n2, label = n0, color = 'b')
+        self.graph.add_edge(n1, n2, label = n0, color = 'blue')
 
     # Visit a parse tree produced by EnquestesParser#altr.
     def visitAltr(self, ctx:EnquestesParser.AltrContext):
-        # n = next(ctx.getChildren())
-        # self.graph.add_node(n.getText())
-        return self.visitChildren(ctx)
+        g = ctx.getChildren()
+        l = [next(g) for i in range(ctx.getChildCount())]
+        n = l[3].getText()
+        for i in range(5, len(l)-1):
+            (label, id) = self.visit(l[i])
+            self.graph.add_edge(self.itemDict[n], self.itemDict[id], label = label, color = 'green')
+
+
 
     # Visit a parse tree produced by EnquestesParser#enqs.
     def visitEnqs(self, ctx:EnquestesParser.EnqsContext):
@@ -65,23 +69,23 @@ class EnquestesVisitorAST(ParseTreeVisitor):
         for i in range(3, len(l)):
             pos = l[i].getText()
             if (i == 3):
-                self.graph.add_edge(ant, self.itemDict[pos])
+                self.graph.add_edge(ant, self.itemDict[pos], color = 'black')
             else:
-                self.graph.add_edge(self.itemDict[ant], self.itemDict[pos])
+                self.graph.add_edge(self.itemDict[ant], self.itemDict[pos], color = 'black')
             ant = pos
+        self.graph.add_edge(self.itemDict[pos], 'END', color = 'black')
 
 
     # Visit a parse tree produced by EnquestesParser#opc.
     def visitOpc(self, ctx:EnquestesParser.OpcContext):
-        # n = next(ctx.getChildren())
-        # self.graph.add_node(n.getText())
         return self.visitChildren(ctx)
 
     # Visit a parse tree produced by EnquestesParser#alt.
     def visitAlt(self, ctx:EnquestesParser.AltContext):
-        # n = next(ctx.getChildren())
-        # self.graph.add_node(n.getText())
-        return self.visitChildren(ctx)
-
+        g = ctx.getChildren()
+        l = [next(g) for i in range(ctx.getChildCount())]
+        label = l[1].getText()
+        id = l[3].getText()
+        return (label, id)
 
 del EnquestesParser
